@@ -29,7 +29,7 @@
     foreach ($layout->columns() as $column) {
         $isSetting = false;
         foreach ($column->blocks() as $block) {
-            if ($block->type() == "settings") {
+            if ($block->type() == "block-settings") {
                 $col_disp .= $block->width() . "fr ";
                 $isSetting = true;
                 break;
@@ -116,8 +116,8 @@
                         background-size: cover;"
             <?php endif ?>
         >
-            <?php foreach ($column->blocks() as $block) :
-                if ($block->type() != "settings") : ?>
+            <?php foreach ($column->blocks() as $block) : ?>
+                <?php if ($block->type() != "block-settings") : ?>
             <div
                 class=  "prose
                         [&>p]:my-0
@@ -126,15 +126,15 @@
                         shrink
                         basis-full
                         <?php if ($setting_block != null) : ?>
-                            <?php if ($block != $column->blocks()->last() && $block->next()->type() != "settings") :
+                            <?php if ($block != $column->blocks()->last() && $block->next()->type() != "block-settings") :
                                 ?><?= $setting_block->blocksSpace() ?><?php
                             endif;
                         endif ?>"
             >
                     <?= $block ?>
             </div>
-                <?php endif;
-            endforeach ?>
+                <?php endif; ?>
+            <?php endforeach ?>
         </div>
     <?php endforeach ?>
     </div>
