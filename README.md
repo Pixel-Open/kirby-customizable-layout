@@ -1,5 +1,8 @@
 # Kirby Button plugin
 
+![GitHub release (with filter)](https://img.shields.io/github/v/release/Pixel-Open/kirby-customizable-layout?style=for-the-badge)
+[![Dependency](https://img.shields.io/badge/kirby-4.x-cca000.svg?style=for-the-badge)](https://getkirby.com/)
+
 A plugin for [Kirby CMS](http://getkirby.com) to add a customizable layout fields
 
 ## Commercial Usage
@@ -10,12 +13,12 @@ This plugin is free
 
 ### Download
 
-[Download the files](hhttps://github.com/Pixel-Open/customizable-layout/releases) and place them inside `site/plugins/customizable-layout`.
+[Download the files](hhttps://github.com/Pixel-Open/kirby-customizable-layout/releases) and place them inside `site/plugins/customizable-layout`.
 
 ### Composer
 
 ```
-composer require pixelopen/customizable-layout
+composer require pixelopen/kirby-customizable-layout
 ```
 
 ### Git Submodule
@@ -23,7 +26,7 @@ composer require pixelopen/customizable-layout
 You can add the plugin as a Git submodule.
 
     $ cd your/project/root
-    $ git submodule add https://github.com/Pixel-Open/customizable-layout.git site/plugins/customizable-layout
+    $ git submodule add https://github.com/Pixel-Open/kirby-customizable-layout.git site/plugins/customizable-layout
     $ git submodule update --init --recursive
     $ git commit -am "Add Kirby Customizable Layout plugin"
 

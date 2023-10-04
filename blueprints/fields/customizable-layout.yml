@@ -1,0 +1,232 @@
+label: pixelopen.customizable_layout.blueprint.fields
+type: layout
+layouts:
+  - "1/1"
+  - "1/2, 1/2"
+  - "1/3, 1/3, 1/3"
+  - "1/3, 2/3"
+  - "2/3, 1/3"
+  - "1/4, 1/4, 1/4, 1/4"
+
+settings:
+  tabs:
+    global:
+      label: pixelopen.customizable_layout.blueprint.fields.global
+      fields:
+        class:
+          type: text
+          width: 1/2
+        id:
+          label: ID
+          type: text
+          width: 1/2
+        background: 
+          extends: fields/color
+          label: pixelopen.customizable_layout.blueprint.fields.background
+          width: 1/2
+        text_color:
+          extends: fields/color
+          label: pixelopen.customizable_layout.blueprint.fields.text_color
+          width: 1/2
+        image:
+          label: pixelopen.customizable_layout.blueprint.fields.image
+          type: files
+          multiple: false
+          query: page.images
+
+    animation:
+      label: pixelopen.customizable_layout.blueprint.fields.animation
+      fields:
+        data-aos:
+          width: 1/2
+          label: pixelopen.customizable_layout.blueprint.fields.data_aos
+          type: select
+          options: [
+            fade,
+            fade-up,
+            fade-down,
+            fade-left,
+            fade-right,
+            fade-up-right,
+            fade-up-left,
+            fade-down-right,
+            fade-down-left,
+            flip-up,
+            flip-down,
+            flip-left,
+            flip-right,
+            slide-up,
+            slide-down,
+            slide-left,
+            slide-right,
+            zoom-in,
+            zoom-in-up,
+            zoom-in-down,
+            zoom-in-left,
+            zoom-in-right,
+            zoom-out,
+            zoom-out-up,
+            zoom-out-down,
+            zoom-out-left,
+            zoom-out-right
+          ]
+
+        data-aos-easing:
+          width: 1/2
+          label: pixelopen.customizable_layout.blueprint.fields.data_aos_easing
+          type: select
+          options: [
+            linear,
+            ease,
+            ease-in,
+            ease-out,
+            ease-in-out,
+            ease-in-back,
+            ease-out-back,
+            ease-in-out-back,
+            ease-in-sine,
+            ease-out-sine,
+            ease-in-out-sine,
+            ease-in-quad,
+            ease-out-quad,
+            ease-in-out-quad,
+            ease-in-cubic,
+            ease-out-cubic,
+            ease-in-out-cubic,
+            ease-in-quart,
+            ease-out-quart,
+            ease-in-out-quart
+          ]
+
+        data-aos-offset:
+          label: pixelopen.customizable_layout.blueprint.fields.data_aos_offset
+          type: number
+          default: 0
+          step: 1
+          width: 1/3
+
+        data-aos-delay:
+          label: pixelopen.customizable_layout.blueprint.fields.data_aos_delay
+          type: number
+          default: 0
+          min: 0
+          max: 3000
+          step: 50
+          after: ms
+          width: 1/3
+
+        data-aos-duration:
+          label: pixelopen.customizable_layout.blueprint.fields.data_aos_duration
+          type: number
+          default: 0
+          min: 0
+          max: 3000
+          step: 50
+          after: ms
+          width: 1/3
+
+        data-aos-mirror:
+          width: 1/2
+          label: pixelopen.customizable_layout.blueprint.fields.data_aos_mirror
+          type: toggle
+          text:
+            - pixelopen.customizable_layout.no
+            - pixelopen.customizable_layout.yes
+        data-aos-once:
+          width: 1/2
+          label: pixelopen.customizable_layout.blueprint.fields.data_aos_once
+          type: toggle
+          text:
+            - pixelopen.customizable_layout.no
+            - pixelopen.customizable_layout.yes
+        data-aos-anchor-placement:
+          label: pixelopen.customizable_layout.blueprint.fields.data_aos_anchor_placement
+          type: select
+          options: [
+            top-bottom,
+            top-center,
+            top-top,
+            center-bottom,
+            center-center,
+            center-top,
+            bottom-bottom,
+            bottom-center,
+            bottom-top
+          ]
+
+
+    disposition:
+      label: pixelopen.customizable_layout.blueprint.fields.disposition
+      fields:
+        # y_align:
+        #   label: pixelopen.customizable_layout.blueprint.fields.y_align
+        #   type: select
+        #   width: 1/2
+        #   options:
+        #     top:
+        #       en: Top
+        #       fr: Haut
+        #     center:
+        #       en: Center
+        #       fr: Milieu
+        #     bottom:
+        #       en: Bottom
+        #       fr: Bas
+        x_align:
+          label: pixelopen.customizable_layout.blueprint.fields.x_align
+          type: select
+          width: 1/2
+          default: center
+          required: true
+          options:
+            start:
+              en: Left
+              fr: Gauche
+            center:
+              en: Center
+              fr: Milieu
+            end:
+              en: Right
+              fr: Droite
+        width:
+          label: pixelopen.customizable_layout.blueprint.fields.width
+          type: select
+          width: 1/2
+          default: "320"
+          required: true
+          options:
+            - value: "320"
+              text:
+                en: Max
+                fr: Max
+            - value: "240"
+              text:
+                en: Medium
+                fr: Moyenne
+            - value: "160"
+              text:
+                en: Small
+                fr: Petite
+            - value: "80"
+              text:
+                en: Very small
+                fr: Très petite
+        column_gap:
+          label: pixelopen.customizable_layout.blueprint.fields.column_gap
+          type: select
+          width: 1/2
+          default: "8"
+          required: true
+          options:
+            - value: "16"
+              text:
+                en: Large
+                fr: Large
+            - value: "8"
+              text:
+                en: Normal
+                fr: Normal
+            - value: "0"
+              text:
+                en: Without
+                fr: Sans

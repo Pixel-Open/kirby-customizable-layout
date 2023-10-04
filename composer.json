@@ -1,0 +1,31 @@
+{
+  "name": "pixelopen/kirby-customizable-layout",
+  "type": "kirby-plugin",
+  "description": "A plugin for Kirby CMS to add customization to layouts",
+  "homepage": "https://github.com/Pixel-Open/customizable-layout",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Pixel Open",
+      "homepage": "https://pixel-open.org/"
+    }
+  ],
+  "keywords": [
+    "kirby",
+    "kirby-cms",
+    "kirby-plugin"
+  ],
+  "require": {
+    "php": ">=8.0.0 <8.3.0",
+    "getkirby/composer-installer": "^1.2",
+    "getkirby/cms": "^4.0.0-beta.2"
+  },
+  "config": {
+    "allow-plugins": {
+      "getkirby/composer-installer": true
+    }
+  },
+  "require-dev": {
+    "symplify/easy-coding-standard": "^12.0"
+  }
+}

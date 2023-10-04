@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "dev": "npx tailwindcss -o ./assets/styles.css --content './snippets/*.php' -w",
+    "build": "npx tailwindcss -o ./assets/styles.css --content './snippets/*.php' -m"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.9",
+    "tailwindcss": "^3.3.2"
+  }
+}
