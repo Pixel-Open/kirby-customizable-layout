@@ -1,6 +1,7 @@
-# Kirby Button plugin
+# Kirby Customizable Layout plugin
 
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/Pixel-Open/kirby-customizable-layout?style=for-the-badge)
+
 [![Dependency](https://img.shields.io/badge/kirby-4.x-cca000.svg?style=for-the-badge)](https://getkirby.com/)
 
 A plugin for [Kirby CMS](http://getkirby.com) to add a customizable layout fields
@@ -13,7 +14,7 @@ This plugin is free
 
 ### Download
 
-[Download the files](hhttps://github.com/Pixel-Open/kirby-customizable-layout/releases) and place them inside `site/plugins/customizable-layout`.
+[Download the files](https://github.com/Pixel-Open/kirby-customizable-layout/releases) and place them inside `site/plugins/customizable-layout`.
 
 ### Composer
 
