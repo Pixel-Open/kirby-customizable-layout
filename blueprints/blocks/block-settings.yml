@@ -1,0 +1,244 @@
+title: pixelopen.customizable_layout.blueprint.block_settings 
+icon: code
+
+tabs:
+  global:
+    label: pixelopen.customizable_layout.blueprint.block_settings.global
+    fields:
+      class:
+        type: text
+        width: 1/2
+      id:
+        label: ID
+        type: text
+        width: 1/2
+      background: 
+        extends: fields/color
+        label: pixelopen.customizable_layout.blueprint.block_settings.background
+        width: 1/2
+      text_color:
+        extends: fields/color
+        label: pixelopen.customizable_layout.blueprint.block_settings.text_color
+        width: 1/2
+      image:
+        label: pixelopen.customizable_layout.blueprint.block_settings.image
+        type: files
+        multiple: false
+        query: page.images
+
+  animation:
+    label: pixelopen.customizable_layout.blueprint.block_settings.animation
+    fields:
+      data-aos:
+        width: 1/2
+        label: pixelopen.customizable_layout.blueprint.block_settings.data_aos
+        type: select
+        options: [
+          fade,
+          fade-up,
+          fade-down,
+          fade-left,
+          fade-right,
+          fade-up-right,
+          fade-up-left,
+          fade-down-right,
+          fade-down-left,
+          flip-up,
+          flip-down,
+          flip-left,
+          flip-right,
+          slide-up,
+          slide-down,
+          slide-left,
+          slide-right,
+          zoom-in,
+          zoom-in-up,
+          zoom-in-down,
+          zoom-in-left,
+          zoom-in-right,
+          zoom-out,
+          zoom-out-up,
+          zoom-out-down,
+          zoom-out-left,
+          zoom-out-right
+        ]
+
+      data-aos-easing:
+        width: 1/2
+        label: pixelopen.customizable_layout.blueprint.block_settings.data_aos_easing
+        type: select
+        options: [
+          linear,
+          ease,
+          ease-in,
+          ease-out,
+          ease-in-out,
+          ease-in-back,
+          ease-out-back,
+          ease-in-out-back,
+          ease-in-sine,
+          ease-out-sine,
+          ease-in-out-sine,
+          ease-in-quad,
+          ease-out-quad,
+          ease-in-out-quad,
+          ease-in-cubic,
+          ease-out-cubic,
+          ease-in-out-cubic,
+          ease-in-quart,
+          ease-out-quart,
+          ease-in-out-quart
+        ]
+
+      data-aos-offset:
+        label: pixelopen.customizable_layout.blueprint.block_settings.data_aos_offset
+        type: number
+        default: 0
+        step: 1
+        width: 1/3
+
+      data-aos-delay:
+        label: pixelopen.customizable_layout.blueprint.block_settings.data_aos_delay
+        type: number
+        default: 0
+        min: 0
+        max: 3000
+        step: 50
+        after: ms
+        width: 1/3
+
+      data-aos-duration:
+        label: pixelopen.customizable_layout.blueprint.block_settings.data_aos_duration
+        type: number
+        default: 0
+        min: 0
+        max: 3000
+        step: 50
+        after: ms
+        width: 1/3
+
+      data-aos-mirror:
+        width: 1/2
+        label: pixelopen.customizable_layout.blueprint.block_settings.data_aos_mirror
+        type: toggle
+        text:
+          - pixelopen.customizable_layout.no
+          - pixelopen.customizable_layout.yes
+      data-aos-once:
+        width: 1/2
+        label: pixelopen.customizable_layout.blueprint.block_settings.data_aos_once
+        type: toggle
+        text:
+          - pixelopen.customizable_layout.no
+          - pixelopen.customizable_layout.yes
+      data-aos-anchor-placement:
+        label: pixelopen.customizable_layout.blueprint.block_settings.data_aos_anchor_placement
+        type: select
+        options: [
+          top-bottom,
+          top-center,
+          top-top,
+          center-bottom,
+          center-center,
+          center-top,
+          bottom-bottom,
+          bottom-center,
+          bottom-top
+        ]
+
+  disposition:
+    label: pixelopen.customizable_layout.blueprint.block_settings.disposition
+    fields:
+      y_align:
+        label: pixelopen.customizable_layout.blueprint.block_settings.y_align
+        type: select
+        width: 1/2
+        options:
+          start:
+            en: Top
+            fr: Haut
+          center:
+            en: Center
+            fr: Centre
+          end:
+            en: Bottom
+            fr: Bas
+          between:
+            en: Space between
+            fr: Espace entre
+          around:
+            en: Space around
+            fr: Espace autour
+          evenly:
+            en: Evenly spaced
+            fr: Espacé équitablement
+      x_align:
+        label: pixelopen.customizable_layout.blueprint.block_settings.x_align
+        type: select
+        width: 1/2
+        options:
+          left:
+            en: Left
+            fr: Gauche
+          center:
+            en: Center
+            fr: Milieu
+          right:
+            en: Right
+            fr: Droite
+      width:
+        label: pixelopen.customizable_layout.blueprint.block_settings.width
+        type: select
+        width: 1/2
+        default: "3"
+        required: true
+        options:
+          - value: "4"
+            text:
+              en: Big
+              fr: Grande
+          - value: "3"
+            text:
+              en: Normal
+              fr: Normal
+          - value: "2"
+            text:
+              en: Small
+              fr: Petite
+          - value: "1"
+            text:
+              en: Very small
+              fr: Très petite
+      margin:
+        label: pixelopen.customizable_layout.blueprint.block_settings.margin
+        type: select
+        width: 1/2
+        default: "8"
+        required: true
+        options:
+          - value: "16"
+            text:
+              en: Large
+              fr: Large
+          - value: "8"
+            text:
+              en: Normal
+              fr: Normal
+          - value: "0"
+            text:
+              en: Without
+              fr: Sans
+      blocksSpace:
+        label: pixelopen.customizable_layout.blueprint.block_settings.blockSpace
+        width: 1/2
+        type: select
+        options:
+          mb-4:
+            en: Small
+            fr: Petit
+          mb-8:
+            en: Medium
+            fr: Moyen
+          mb-16:
+            en: Big
+            fr: Grand
