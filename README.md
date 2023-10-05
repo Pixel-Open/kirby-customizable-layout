@@ -41,6 +41,8 @@ Run these commands to update the plugin:
 
 ## Options
 
+To add a customizable layout field in your blueprint, you only have to extend `fields/customizable-layout`
+
 For now, you need to add the fieldsets `block-settings` with the following lines in your `/site/config/config.php`:
 
 ```php
