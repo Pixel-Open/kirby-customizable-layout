@@ -98,8 +98,6 @@ options:
   color5: "#color5"
 ```
 
-Moreover, you need to adjust the color panel in `tailwind.config.js` according to the color you have set.
-
 ## Precisions
 
 The plugin is still in construction, you may experience errors or graphic problems in your frontend
