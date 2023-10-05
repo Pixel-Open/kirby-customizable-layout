@@ -1,6 +1,6 @@
 ---
-name: "🐛 Bug report"
-about: "If something isn't working as expected 🤬"
+name: "Bug report"
+about: "If you find something strange or a functionnality don't work like expected"
 ---
 
 ## Describe the bug
@@ -15,7 +15,7 @@ about: "If something isn't working as expected 🤬"
 
 ## Additional context
 
-E.g. screenshots
+E.g. screenshots, logs, video
 
 ## Context
 
