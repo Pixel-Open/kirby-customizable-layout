@@ -1,144 +1,95 @@
-<?= css('media/plugins/pixelopen/customizable-layout/styles.css')?>
+<?php $getColorName = function (string $hex): string {
+    $color = Kirby\Cms\Blueprint::find('fields/color')['options'];
+    $colorName = array_search(strtoupper($hex), $color);
+    return str_replace(' ', '-', strtolower($colorName));
+} ?>
 
 <?php
-    foreach ($field->toLayouts() as $layout) :
-        $classColumnChild = [];
-        $layout_settings = $layout->attrs();
-        foreach ($layout->columns() as $column) {
-            $classColumnChild[] = str_replace('/', '', $column->width());
-            $classColumns = implode("-", $classColumnChild);
-        }
-        ?>
-    <section class="flex justify-<?= $layout_settings->x_align()
-        ?>" style="<?php if ($layout_settings->image()->toFile()) {
-            echo "background-image: url(" . $layout_settings->image()->toFile()->url() . "); background-position: center center; background-size: cover;";
-        }
-        ?><?php if ($layout_settings->background() != "") {
-            echo "background-color: " . $layout_settings->background();
-        }
-        ?>" id="<?= esc($layout->id(), 'attr') ?>">
-      <?php
-        $col_disp = "";
-        foreach ($layout->columns() as $column) {
-            $isSetting = false;
-            foreach ($column->blocks() as $block) {
-                if ($block->type() == "settings") {
-                    $col_disp .= $block->width() . "fr ";
-                    $isSetting = true;
-                    break;
-                }
-            }
-            if (! $isSetting) {
-                $col_disp .= "3fr ";
-            }
-        }
-        ?><div class="<?= esc($layout_settings->class(), 'attr') ?> bloc__columns__<?= $classColumns; ?> layout py-8 grid max-w-7xl h-full gap-<?= $layout_settings->column_gap() ?> w-<?= $layout_settings->width()
-        ?>" id="<?= esc($layout_settings->id(), 'attr')
-        ?>" style="grid-template-columns: <?= $col_disp ?>;" <?php
-            foreach ($layout_settings->toArray() as $key => $value) :
-                if ($value != "" && $value != 0 && $value != "false" && str_contains($key, "data-aos")) {
-                    echo "$key=\"$value\" ";
-                }
-            endforeach;
-        ?>>
-    <?php foreach ($layout->columns() as $column) : ?>
-    <div <?php
-            $settingsSet = false;
-        $setting_block = null;
+foreach ($field->toLayouts() as $layout):
+    $layout_settings = $layout->attrs();
+    ?>
+    <section
+        class=
+            "customizable_layout__section
+            customizable_layout__layout--align-<?= $layout_settings->x_align() ?>
+            <?= $layout_settings->background()->isNotEmpty() ? "bg-" . ($getColorName($layout_settings->background()) ?? $layout_settings->background()) : "" ?>
+            <?= $layout_settings->text_color()->isNotEmpty() ? "text-" . ($getColorName($layout_settings->text_color()) ?? $layout_settings->text_color()) : "" ?>"
+
+        <?= $layout_settings->image()->toFile() ? "style=\"background-image: url({$layout_settings->image()->toFile()->url()})\"" : "" ?>
+    >
+
+    <?php
+    $blockSettings = [];
+    $col_disp = "";
+    foreach ($layout->columns() as $column) {
+        $isSetting = false;
         foreach ($column->blocks() as $block) {
-            if (! $settingsSet && $block->type() == "block-settings") {
-                $setting_block = $block;
+            if ($block->type() == "block-settings") {
+                $col_disp .= '-' . $block->width();
+                $isSetting = true;
+                $blockSettings[$column->id()] = $block;
+                break;
+            }
+        }
+        if (! $isSetting) {
+            $col_disp .= "-3";
+            $blockSettings[$column->id()] = null;
+        }
+    }?>
+
+    <div
+        class=
+            "customizable_layout__layout
+            "<?= $layout_settings->class()->isNotEmpty() ? esc($layout_settings->class(), 'attr') : "" ?>
+            customizable_layout__layout--bloc-columns<?= $col_disp ?>
+            customizable_layout__layout--gap-<?= $layout_settings->column_gap() ?>
+            customizable_layout__layout--width-<?= $layout_settings->width()?>"
+        <?= $layout_settings->content()->get('id')->isNotEmpty() ? "id=\"{$layout_settings->content()->get('id')->esc()}\"" : "" ?>
+
+        <?php foreach ($layout_settings->content()->toArray() as $key => $value) {
+            if ($value != "" && $value != 0 && $value != "false" && str_contains($key, "data-aos")) {
+                echo "$key=\"$value\" ";
+            }
+        } ?>
+    >
+
+        <?php foreach ($layout->columns() as $column) : ?>
+        <div
+            <?php $setting_block = $blockSettings[$column->id()];
+            if ($setting_block) {
                 foreach ($block->content()->toArray() as $key => $value) {
                     if ($value != "" && $value != 0 && $value != "false" && str_contains($key, "data-aos")) {
                         echo "$key=\"$value\" ";
                     }
-                    if ($value != "" && $key == "x_align") {
-                        echo "align=\"$value\" ";
-                    }
                 }
-            }
-        }
-        ?>class="column prose max-w-7xl flex flex-wrap column__<?= esc($column->span(), 'css') ?><?php
-        if ($setting_block != null) {
-            echo "" . esc($setting_block->class(), 'attr') . " ";
-            echo "content-" . esc($setting_block->y_align(), 'attr') . " ";
+            }?>
+            class=
+                "customizable_layout__column
+                <?php if ($setting_block): ?>
+                <?= $setting_block->class()->isNotEmpty() ? "{$setting_block->class()->esc()}" : "" ?>
+                <?= $setting_block->background()->isNotEmpty() ? "bg-" . ($getColorName($setting_block->background()) ?? $setting_block->background()) : "" ?>
+                <?= $setting_block->text_color()->isNotEmpty() ? "text-" . ($getColorName($setting_block->text_color()) ?? $setting_block->text_color()) : "" ?>
+                <?= $setting_block->x_align()->isNotEmpty() ? "customizable_layout__column--x-align-{$setting_block->x_align()}" : "" ?>
+                <?= $setting_block->y_align()->isNotEmpty() ? "customizable_layout__column--y-align-{$setting_block->y_align()}" : "" ?>
+                customizable_layout__column--width-<?= $setting_block->width() ?>
+                customizable_layout__column--margin-<?= $setting_block->margin() ?>
+                <?= $setting_block->blockSpace()->isNotEmpty() ? "customizable_layout__column--block-space-{$setting_block->blockSpace()}" : "" ?>
+                <?php endif ?>"
 
-            if (count($layout->columns()) > 1) {
-                if ($setting_block->image()->toFile() || $setting_block->background() != "") {
-                    echo "p-" . $setting_block->margin() . " ";
-                } elseif ($column == $layout->columns()->first()) {
-                    echo "pr-" . $setting_block->margin() . " ";
-                } elseif ($column == $layout->columns()->last()) {
-                    echo "pl-" . $setting_block->margin() . " ";
-                } else {
-                    echo "px-" . $setting_block->margin() . " ";
-                }
-            }
-        }
-        ?>" <?php
-        if ($setting_block != null) :
-            ?>id="<?= ($setting_block != null ? esc($setting_block->id(), 'attr') : "")
-            ?>" style="<?php
-                if ($setting_block->image()->toFile()) {
-                    echo "background-image: url(" . $setting_block->image()->toFile()->url() . "); background-position: center center; background-size: cover;";
-                }
-                if ($setting_block->background() != "") {
-                    echo "background-color: " . $setting_block->background();
-                }
-            ?>"<?php endif
-        ?>>
-          <?php
-            foreach ($column->blocks() as $block) :
-                if ($block->type() != "settings") :
-                    ?><div class="prose [&>p]:my-0 flex-none max-w-none shrink basis-full<?php if ($setting_block != null) {
-                        if ($block != $column->blocks()->last() && $block->next()->type() != "settings") {
-                            echo " " . $setting_block->blocksSpace();
-                        }
-                    }
-                    ?>"><?php
-                    $color_style = $setting_block != null && $setting_block->text_color() != "" ? " style=\"color: " . $setting_block->text_color() . "\"" : ($layout_settings->text_color() != "" ? " style=\"color: " . $layout_settings->text_color() . "\"" : "");
-                    $uri = preg_replace("/<figcaption/", "<figcaption" . $color_style, preg_replace("/\s+/", " ", $block->toHtml()));
-                    $pattern = '{<(.*)( .*)?>(.*)<\/\1>}';
-
-                    if (preg_match($pattern, $uri, $matches)) {
-                        echo("<" . $matches[1] . $matches[2] . $color_style . ">" . $matches[3] . "</" . $matches[1] . ">");
-                    }
-                    ?></div>
-            <?php
-                endif;
-            endforeach ?></div>
-    <?php endforeach
-    ?>  </div>
-    </section>
+            <?php if ($setting_block != null): ?>
+            <?= $setting_block->content()->get('id')->isNotEmpty() ? "id=\"{$setting_block->content()->get('id')->esc()}\"" : "" ?>
+            <?= $setting_block->image()->toFile() ? "style=\"background-image: url({$setting_block->image()->toFile()->url()})\"" : "" ?>
+            <?php endif ?>
+        >
+            <?php foreach ($column->blocks() as $block):
+                if ($block->type() != "block-settings"): ?>
+                    <div class="customizable_layout__block">
+                        <?= $block->toHtml() ?>
+                    </div>
+                <?php endif;
+            endforeach ?>
+        </div>
+        <?php endforeach ?>
+    </div>
+</section>
 <?php endforeach ?>
-
-<script>
-    function onResizePhone() {
-        const layouts = document.getElementsByClassName('layout');
-        for (const layout of layouts) {
-            layout.style.transitionDuration = "0s";
-            layout.style.width = window.innerWidth + "px";
-        }
-    }
-    function onResize() {
-        const layouts = document.getElementsByClassName('layout');
-        for (const layout of layouts) {
-            layout.style.transitionDuration = "0s";
-            layout.style.marginLeft = (window.innerWidth - 1280) / 2 + "px";
-            layout.style.marginRight = (window.innerWidth - 1280) / 2 + "px";
-        }
-    }
-
-    if (window.innerWidth < '1280') {
-        const layouts = document.getElementsByClassName('layout');
-        for (const layout of layouts) {
-            layout.style.gridTemplateColumns = "minmax(0, 1fr)";
-        }
-        window.addEventListener('resize', onResizePhone);
-        onResizePhone();
-    }
-    else {
-        window.addEventListener('resize', onResize);
-        onResize();
-    }
-</script>

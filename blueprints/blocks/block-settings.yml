@@ -233,12 +233,15 @@ tabs:
         width: 1/2
         type: select
         options:
-          mb-4:
-            en: Small
-            fr: Petit
-          mb-8:
-            en: Medium
-            fr: Moyen
-          mb-16:
-            en: Big
-            fr: Grand
+          - value: "4"
+            text:
+              en: Small
+              fr: Petit
+          - value: "8"
+            text:
+              en: Medium
+              fr: Moyen
+          - value: "16"
+            text:
+              en: Big
+              fr: Grand

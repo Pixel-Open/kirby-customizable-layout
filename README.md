@@ -85,7 +85,7 @@ Dont forget to call the snippet in the page where you use the plugin.
 ```
 
 
-The plugin work with color field from Kirby 4, you can create a new fields with your custom colors at `/site/blueprints/fields/color.yml`:
+The plugin work with color field from Kirby 4, you must create a new fields with your custom colors at `/site/blueprints/fields/color.yml`:
 
 ```yml
 type: color
@@ -97,8 +97,3 @@ options:
   color4: "#color4"
   color5: "#color5"
 ```
-
-## Precisions
-
-The plugin is still in construction, you may experience errors or graphic problems in your frontend
-For now, the plugin is intended to work in a container of 1280px for wide screen.
