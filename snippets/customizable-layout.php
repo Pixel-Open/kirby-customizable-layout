@@ -40,7 +40,7 @@ foreach ($field->toLayouts() as $layout):
     <div
         class=
             "customizable_layout__layout
-            "<?= $layout_settings->class()->isNotEmpty() ? esc($layout_settings->class(), 'attr') : "" ?>
+            <?= $layout_settings->class()->isNotEmpty() ? esc($layout_settings->class(), 'attr') : "" ?>
             customizable_layout__layout--bloc-columns<?= $col_disp ?>
             customizable_layout__layout--gap-<?= $layout_settings->column_gap() ?>
             customizable_layout__layout--width-<?= $layout_settings->width()?>"
