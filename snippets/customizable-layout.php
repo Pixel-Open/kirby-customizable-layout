@@ -11,7 +11,7 @@ foreach ($field->toLayouts() as $layout):
     <section
         class=
             "customizable_layout__section
-            customizable_layout__layout--align-<?= $layout_settings->x_align() ?>
+            customizable_layout__section--align-<?= $layout_settings->x_align() ?>
             <?= $layout_settings->background()->isNotEmpty() ? "bg-" . ($getColorName($layout_settings->background()) ?? $layout_settings->background()) : "" ?>
             <?= $layout_settings->text_color()->isNotEmpty() ? "text-" . ($getColorName($layout_settings->text_color()) ?? $layout_settings->text_color()) : "" ?>"
 
@@ -31,7 +31,7 @@ foreach ($field->toLayouts() as $layout):
                 break;
             }
         }
-        if (! $isSetting) {
+        if (!$isSetting) {
             $col_disp .= "-3";
             $blockSettings[$column->id()] = null;
         }
@@ -42,7 +42,7 @@ foreach ($field->toLayouts() as $layout):
             "customizable_layout__layout
             <?= $layout_settings->class()->isNotEmpty() ? esc($layout_settings->class(), 'attr') : "" ?>
             customizable_layout__layout--bloc-columns<?= $col_disp ?>
-            customizable_layout__layout--gap-<?= $layout_settings->column_gap() ?>
+            <?= $layout_settings->column_gap()->isNotEmpty() ? "customizable_layout__layout--column-gap-{$layout_settings->column_gap()}" : "" ?>
             customizable_layout__layout--width-<?= $layout_settings->width()?>"
         <?= $layout_settings->content()->get('id')->isNotEmpty() ? "id=\"{$layout_settings->content()->get('id')->esc()}\"" : "" ?>
 
@@ -72,7 +72,7 @@ foreach ($field->toLayouts() as $layout):
                 <?= $setting_block->x_align()->isNotEmpty() ? "customizable_layout__column--x-align-{$setting_block->x_align()}" : "" ?>
                 <?= $setting_block->y_align()->isNotEmpty() ? "customizable_layout__column--y-align-{$setting_block->y_align()}" : "" ?>
                 customizable_layout__column--width-<?= $setting_block->width() ?>
-                customizable_layout__column--margin-<?= $setting_block->margin() ?>
+                <?= $setting_block->margin()->isNotEmpty() ? "customizable_layout__column--margin-{$setting_block->margin()}" : "" ?>
                 <?= $setting_block->blockSpace()->isNotEmpty() ? "customizable_layout__column--block-space-{$setting_block->blockSpace()}" : "" ?>
                 <?php endif ?>"
 
