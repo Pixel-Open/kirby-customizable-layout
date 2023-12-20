@@ -195,8 +195,8 @@ tabs:
         options:
           - value: "4"
             text:
-              en: Big
-              fr: Grande
+              en: Large
+              fr: Large
           - value: "3"
             text:
               en: Normal
@@ -213,32 +213,27 @@ tabs:
         label: pixelopen.customizable_layout.blueprint.block_settings.margin
         type: select
         width: 1/2
-        default: "8"
-        required: true
         options:
-          - value: "16"
-            text:
-              en: Large
-              fr: Large
-          - value: "8"
-            text:
-              en: Normal
-              fr: Normal
-          - value: "0"
-            text:
-              en: Without
-              fr: Sans
+          large:
+            en: Large
+            fr: Large
+          medium:
+            en: Normal
+            fr: Normal
+          small:
+            en: Small
+            fr: Petite
       blocksSpace:
         label: pixelopen.customizable_layout.blueprint.block_settings.blockSpace
         width: 1/2
         type: select
         options:
-          mb-4:
+          small:
             en: Small
             fr: Petit
-          mb-8:
+          medium:
             en: Medium
             fr: Moyen
-          mb-16:
-            en: Big
-            fr: Grand
+          large:
+            en: Large
+            fr: Large

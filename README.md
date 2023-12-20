@@ -1,6 +1,7 @@
-# Kirby Button plugin
+# Kirby Customizable Layout plugin
 
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/Pixel-Open/kirby-customizable-layout?style=for-the-badge)
+
 [![Dependency](https://img.shields.io/badge/kirby-4.x-cca000.svg?style=for-the-badge)](https://getkirby.com/)
 
 A plugin for [Kirby CMS](http://getkirby.com) to add a customizable layout fields
@@ -13,7 +14,7 @@ This plugin is free
 
 ### Download
 
-[Download the files](hhttps://github.com/Pixel-Open/kirby-customizable-layout/releases) and place them inside `site/plugins/customizable-layout`.
+[Download the files](https://github.com/Pixel-Open/kirby-customizable-layout/releases) and place them inside `site/plugins/kirby-customizable-layout`.
 
 ### Composer
 
@@ -26,7 +27,7 @@ composer require pixelopen/kirby-customizable-layout
 You can add the plugin as a Git submodule.
 
     $ cd your/project/root
-    $ git submodule add https://github.com/Pixel-Open/kirby-customizable-layout.git site/plugins/customizable-layout
+    $ git submodule add https://github.com/Pixel-Open/kirby-customizable-layout.git site/plugins/kirby-customizable-layout
     $ git submodule update --init --recursive
     $ git commit -am "Add Kirby Customizable Layout plugin"
 
@@ -39,6 +40,8 @@ Run these commands to update the plugin:
     $ git submodule update --init --recursive
 
 ## Options
+
+To add a customizable layout field in your blueprint, you only have to extend `fields/customizable-layout`
 
 For now, you need to add the fieldsets `block-settings` with the following lines in your `/site/config/config.php`:
 
@@ -82,7 +85,7 @@ Dont forget to call the snippet in the page where you use the plugin.
 ```
 
 
-The plugin work with color field from Kirby 4, you can create a new fields with your custom colors at `/site/blueprints/fields/color.yml`:
+The plugin work with color field from Kirby 4, you must create a new fields with your custom colors at `/site/blueprints/fields/color.yml`:
 
 ```yml
 type: color
@@ -94,10 +97,3 @@ options:
   color4: "#color4"
   color5: "#color5"
 ```
-
-Moreover, you need to adjust the color panel in `tailwind.config.js` according to the color you have set.
-
-## Precisions
-
-The plugin is still in construction, you may experience errors or graphic problems in your frontend
-For now, the plugin is intended to work in a container of 1280px for wide screen.

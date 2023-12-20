@@ -192,41 +192,32 @@ settings:
           label: pixelopen.customizable_layout.blueprint.fields.width
           type: select
           width: 1/2
-          default: "320"
+          default: large
           required: true
           options:
-            - value: "320"
-              text:
-                en: Max
-                fr: Max
-            - value: "240"
-              text:
-                en: Medium
-                fr: Moyenne
-            - value: "160"
-              text:
-                en: Small
-                fr: Petite
-            - value: "80"
-              text:
-                en: Very small
-                fr: Très petite
+            large:
+              en: Large
+              fr: Large
+            medium:
+              en: Medium
+              fr: Moyenne
+            small:
+              en: Small
+              fr: Petite
+            very_small:
+              en: Very small
+              fr: Très petite
         column_gap:
           label: pixelopen.customizable_layout.blueprint.fields.column_gap
           type: select
           width: 1/2
-          default: "8"
-          required: true
           options:
-            - value: "16"
-              text:
-                en: Large
-                fr: Large
-            - value: "8"
-              text:
-                en: Normal
-                fr: Normal
-            - value: "0"
-              text:
-                en: Without
-                fr: Sans
+            large:
+              en: Large
+              fr: Large
+            medium:
+              en: Medium
+              fr: Moyenne
+            small:
+              en: Small
+              fr: Petite
