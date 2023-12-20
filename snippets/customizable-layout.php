@@ -31,7 +31,7 @@ foreach ($field->toLayouts() as $layout):
                 break;
             }
         }
-        if (!$isSetting) {
+        if (! $isSetting) {
             $col_disp .= "-3";
             $blockSettings[$column->id()] = null;
         }
